@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  /* 🎨 نظام الألوان - Khawla Dev Portfolio */
+  
+  /* الأسود الصلب */
+  --color-ink-950: #060608;
+  --color-ink-900: #060A12;
+  
+  /* الأزرق الأساسي */
+  --color-brand-500: #1E73B3;
+  --color-brand-400: #3D8DD0;
+  --color-brand-600: #155A8F;
+  
+  /* الأزرق الفاتح */
+  --color-accent-300: #649FC8;
+  --color-accent-200: #8BB8D8;
+  
+  /* الأساسيات */
+  --color-white: #FFFFFF;
+  --color-gray-100: #E5E7EB;
+  --color-gray-300: #9CA3AF;
+  --color-gray-500: #6B7280;
+  --color-gray-700: #374151;
+  --color-gray-800: #1F2937;
+  --color-gray-900: #111827;
+
+  /* الخطوط */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono), "Courier New", monospace;
+}
+
+/* ─────────────────────────────────────────────
+   الأساسيات
+   ───────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink-900);
+  color: var(--color-gray-100);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: var(--color-brand-500);
+  color: var(--color-white);
+}
+
+/* شريط التمرير */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink-950);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-500);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-400);
+}
+
+/* ─────────────────────────────────────────────
+   Animations
+   ───────────────────────────────────────────── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
+
+/* ─────────────────────────────────────────────
+   Binary Pattern - أصفار وواحدات مثل اللوغو
+   ───────────────────────────────────────────── */
+.binary-bg {
+  position: relative;
+}
+
+.binary-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cdefs%3E%3Cstyle%3Etext%7Bfont-family:monospace;font-size:11px;fill:%23649FC8;%7D%3C/style%3E%3C/defs%3E%3Ctext x='10' y='20'%3E1%3C/text%3E%3Ctext x='30' y='20'%3E0%3C/text%3E%3Ctext x='50' y='20'%3E1%3C/text%3E%3Ctext x='70' y='20'%3E1%3C/text%3E%3Ctext x='90' y='20'%3E0%3C/text%3E%3Ctext x='110' y='20'%3E0%3C/text%3E%3Ctext x='130' y='20'%3E1%3C/text%3E%3Ctext x='150' y='20'%3E0%3C/text%3E%3Ctext x='170' y='20'%3E1%3C/text%3E%3Ctext x='190' y='20'%3E1%3C/text%3E%3Ctext x='210' y='20'%3E0%3C/text%3E%3Ctext x='230' y='20'%3E1%3C/text%3E%3Ctext x='250' y='20'%3E0%3C/text%3E%3Ctext x='270' y='20'%3E0%3C/text%3E%3Ctext x='10' y='45'%3E0%3C/text%3E%3Ctext x='30' y='45'%3E1%3C/text%3E%3Ctext x='50' y='45'%3E0%3C/text%3E%3Ctext x='70' y='45'%3E0%3C/text%3E%3Ctext x='90' y='45'%3E1%3C/text%3E%3Ctext x='110' y='45'%3E1%3C/text%3E%3Ctext x='130' y='45'%3E0%3C/text%3E%3Ctext x='150' y='45'%3E1%3C/text%3E%3Ctext x='170' y='45'%3E0%3C/text%3E%3Ctext x='190' y='45'%3E1%3C/text%3E%3Ctext x='210' y='45'%3E0%3C/text%3E%3Ctext x='230' y='45'%3E1%3C/text%3E%3Ctext x='250' y='45'%3E1%3C/text%3E%3Ctext x='270' y='45'%3E0%3C/text%3E%3Ctext x='10' y='70'%3E1%3C/text%3E%3Ctext x='30' y='70'%3E0%3C/text%3E%3Ctext x='50' y='70'%3E1%3C/text%3E%3Ctext x='70' y='70'%3E0%3C/text%3E%3Ctext x='90' y='70'%3E0%3C/text%3E%3Ctext x='110' y='70'%3E1%3C/text%3E%3Ctext x='130' y='70'%3E0%3C/text%3E%3Ctext x='150' y='70'%3E1%3C/text%3E%3Ctext x='170' y='70'%3E1%3C/text%3E%3Ctext x='190' y='70'%3E0%3C/text%3E%3Ctext x='210' y='70'%3E1%3C/text%3E%3Ctext x='230' y='70'%3E0%3C/text%3E%3Ctext x='250' y='70'%3E1%3C/text%3E%3Ctext x='270' y='70'%3E1%3C/text%3E%3Ctext x='10' y='95'%3E0%3C/text%3E%3Ctext x='30' y='95'%3E1%3C/text%3E%3Ctext x='50' y='95'%3E1%3C/text%3E%3Ctext x='70' y='95'%3E0%3C/text%3E%3Ctext x='90' y='95'%3E1%3C/text%3E%3Ctext x='110' y='95'%3E0%3C/text%3E%3Ctext x='130' y='95'%3E0%3C/text%3E%3Ctext x='150' y='95'%3E1%3C/text%3E%3Ctext x='170' y='95'%3E0%3C/text%3E%3Ctext x='190' y='95'%3E1%3C/text%3E%3Ctext x='210' y='95'%3E1%3C/text%3E%3Ctext x='230' y='95'%3E0%3C/text%3E%3Ctext x='250' y='95'%3E0%3C/text%3E%3Ctext x='270' y='95'%3E1%3C/text%3E%3Ctext x='10' y='120'%3E1%3C/text%3E%3Ctext x='30' y='120'%3E1%3C/text%3E%3Ctext x='50' y='120'%3E0%3C/text%3E%3Ctext x='70' y='120'%3E1%3C/text%3E%3Ctext x='90' y='120'%3E0%3C/text%3E%3Ctext x='110' y='120'%3E1%3C/text%3E%3Ctext x='130' y='120'%3E1%3C/text%3E%3Ctext x='150' y='120'%3E0%3C/text%3E%3Ctext x='170' y='120'%3E0%3C/text%3E%3Ctext x='190' y='120'%3E1%3C/text%3E%3Ctext x='210' y='120'%3E0%3C/text%3E%3Ctext x='230' y='120'%3E1%3C/text%3E%3Ctext x='250' y='120'%3E0%3C/text%3E%3Ctext x='270' y='120'%3E1%3C/text%3E%3Ctext x='10' y='145'%3E0%3C/text%3E%3Ctext x='30' y='145'%3E0%3C/text%3E%3Ctext x='50' y='145'%3E1%3C/text%3E%3Ctext x='70' y='145'%3E0%3C/text%3E%3Ctext x='90' y='145'%3E1%3C/text%3E%3Ctext x='110' y='145'%3E0%3C/text%3E%3Ctext x='130' y='145'%3E1%3C/text%3E%3Ctext x='150' y='145'%3E0%3C/text%3E%3Ctext x='170' y='145'%3E1%3C/text%3E%3Ctext x='190' y='145'%3E0%3C/text%3E%3Ctext x='210' y='145'%3E1%3C/text%3E%3Ctext x='230' y='145'%3E1%3C/text%3E%3Ctext x='250' y='145'%3E0%3C/text%3E%3Ctext x='270' y='145'%3E0%3C/text%3E%3Ctext x='10' y='170'%3E1%3C/text%3E%3Ctext x='30' y='170'%3E0%3C/text%3E%3Ctext x='50' y='170'%3E0%3C/text%3E%3Ctext x='70' y='170'%3E1%3C/text%3E%3Ctext x='90' y='170'%3E0%3C/text%3E%3Ctext x='110' y='170'%3E1%3C/text%3E%3Ctext x='130' y='170'%3E0%3C/text%3E%3Ctext x='150' y='170'%3E0%3C/text%3E%3Ctext x='170' y='170'%3E1%3C/text%3E%3Ctext x='190' y='170'%3E0%3C/text%3E%3Ctext x='210' y='170'%3E1%3C/text%3E%3Ctext x='230' y='170'%3E0%3C/text%3E%3Ctext x='250' y='170'%3E1%3C/text%3E%3Ctext x='270' y='170'%3E1%3C/text%3E%3Ctext x='10' y='195'%3E0%3C/text%3E%3Ctext x='30' y='195'%3E1%3C/text%3E%3Ctext x='50' y='195'%3E1%3C/text%3E%3Ctext x='70' y='195'%3E0%3C/text%3E%3Ctext x='90' y='195'%3E1%3C/text%3E%3Ctext x='110' y='195'%3E0%3C/text%3E%3Ctext x='130' y='195'%3E1%3C/text%3E%3Ctext x='150' y='195'%3E1%3C/text%3E%3Ctext x='170' y='195'%3E0%3C/text%3E%3Ctext x='190' y='195'%3E1%3C/text%3E%3Ctext x='210' y='195'%3E0%3C/text%3E%3Ctext x='230' y='195'%3E0%3C/text%3E%3Ctext x='250' y='195'%3E1%3C/text%3E%3Ctext x='270' y='195'%3E0%3C/text%3E%3Ctext x='10' y='220'%3E1%3C/text%3E%3Ctext x='30' y='220'%3E0%3C/text%3E%3Ctext x='50' y='220'%3E0%3C/text%3E%3Ctext x='70' y='220'%3E1%3C/text%3E%3Ctext x='90' y='220'%3E0%3C/text%3E%3Ctext x='110' y='220'%3E1%3C/text%3E%3Ctext x='130' y='220'%3E1%3C/text%3E%3Ctext x='150' y='220'%3E0%3C/text%3E%3Ctext x='170' y='220'%3E1%3C/text%3E%3Ctext x='190' y='220'%3E0%3C/text%3E%3Ctext x='210' y='220'%3E0%3C/text%3E%3Ctext x='230' y='220'%3E1%3C/text%3E%3Ctext x='250' y='220'%3E0%3C/text%3E%3Ctext x='270' y='220'%3E1%3C/text%3E%3Ctext x='10' y='245'%3E0%3C/text%3E%3Ctext x='30' y='245'%3E1%3C/text%3E%3Ctext x='50' y='245'%3E0%3C/text%3E%3Ctext x='70' y='245'%3E1%3C/text%3E%3Ctext x='90' y='245'%3E1%3C/text%3E%3Ctext x='110' y='245'%3E0%3C/text%3E%3Ctext x='130' y='245'%3E0%3C/text%3E%3Ctext x='150' y='245'%3E1%3C/text%3E%3Ctext x='170' y='245'%3E0%3C/text%3E%3Ctext x='190' y='245'%3E1%3C/text%3E%3Ctext x='210' y='245'%3E1%3C/text%3E%3Ctext x='230' y='245'%3E0%3C/text%3E%3Ctext x='250' y='245'%3E1%3C/text%3E%3Ctext x='270' y='245'%3E0%3C/text%3E%3Ctext x='10' y='270'%3E1%3C/text%3E%3Ctext x='30' y='270'%3E1%3C/text%3E%3Ctext x='50' y='270'%3E1%3C/text%3E%3Ctext x='70' y='270'%3E0%3C/text%3E%3Ctext x='90' y='270'%3E0%3C/text%3E%3Ctext x='110' y='270'%3E1%3C/text%3E%3Ctext x='130' y='270'%3E0%3C/text%3E%3Ctext x='150' y='270'%3E1%3C/text%3E%3Ctext x='170' y='270'%3E0%3C/text%3E%3Ctext x='190' y='270'%3E0%3C/text%3E%3Ctext x='210' y='270'%3E1%3C/text%3E%3Ctext x='230' y='270'%3E1%3C/text%3E%3Ctext x='250' y='270'%3E0%3C/text%3E%3Ctext x='270' y='270'%3E1%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+.binary-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────
+   Halo تحت النافبار - أصفار وواحدات بتلاشي
+   ───────────────────────────────────────────── */
+.navbar-halo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  z-index: 40;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cdefs%3E%3Cstyle%3Etext%7Bfont-family:monospace;font-size:10px;fill:%23649FC8;%3C/style%3E%3C/defs%3E%3Ctext x='4' y='14'%3E1%3C/text%3E%3Ctext x='16' y='14'%3E0%3C/text%3E%3Ctext x='28' y='14'%3E1%3C/text%3E%3Ctext x='40' y='14'%3E1%3C/text%3E%3Ctext x='52' y='14'%3E0%3C/text%3E%3Ctext x='64' y='14'%3E0%3C/text%3E%3Ctext x='76' y='14'%3E1%3C/text%3E%3Ctext x='88' y='14'%3E0%3C/text%3E%3Ctext x='100' y='14'%3E1%3C/text%3E%3Ctext x='112' y='14'%3E0%3C/text%3E%3Ctext x='124' y='14'%3E1%3C/text%3E%3Ctext x='4' y='32'%3E0%3C/text%3E%3Ctext x='16' y='32'%3E1%3C/text%3E%3Ctext x='28' y='32'%3E0%3C/text%3E%3Ctext x='40' y='32'%3E0%3C/text%3E%3Ctext x='52' y='32'%3E1%3C/text%3E%3Ctext x='64' y='32'%3E1%3C/text%3E%3Ctext x='76' y='32'%3E0%3C/text%3E%3Ctext x='88' y='32'%3E1%3C/text%3E%3Ctext x='100' y='32'%3E0%3C/text%3E%3Ctext x='112' y='32'%3E1%3C/text%3E%3Ctext x='124' y='32'%3E0%3C/text%3E%3Ctext x='4' y='50'%3E1%3C/text%3E%3Ctext x='16' y='50'%3E0%3C/text%3E%3Ctext x='28' y='50'%3E1%3C/text%3E%3Ctext x='40' y='50'%3E0%3C/text%3E%3Ctext x='52' y='50'%3E0%3C/text%3E%3Ctext x='64' y='50'%3E1%3C/text%3E%3Ctext x='76' y='50'%3E0%3C/text%3E%3Ctext x='88' y='50'%3E1%3C/text%3E%3Ctext x='100' y='50'%3E1%3C/text%3E%3Ctext x='112' y='50'%3E0%3C/text%3E%3Ctext x='124' y='50'%3E1%3C/text%3E%3Ctext x='4' y='68'%3E0%3C/text%3E%3Ctext x='16' y='68'%3E1%3C/text%3E%3Ctext x='28' y='68'%3E1%3C/text%3E%3Ctext x='40' y='68'%3E0%3C/text%3E%3Ctext x='52' y='68'%3E1%3C/text%3E%3Ctext x='64' y='68'%3E0%3C/text%3E%3Ctext x='76' y='68'%3E0%3C/text%3E%3Ctext x='88' y='68'%3E1%3C/text%3E%3Ctext x='100' y='68'%3E0%3C/text%3E%3Ctext x='112' y='68'%3E1%3C/text%3E%3Ctext x='124' y='68'%3E1%3C/text%3E%3Ctext x='4' y='86'%3E1%3C/text%3E%3Ctext x='16' y='86'%3E1%3C/text%3E%3Ctext x='28' y='86'%3E0%3C/text%3E%3Ctext x='40' y='86'%3E1%3C/text%3E%3Ctext x='52' y='86'%3E0%3C/text%3E%3Ctext x='64' y='86'%3E1%3C/text%3E%3Ctext x='76' y='86'%3E1%3C/text%3E%3Ctext x='88' y='86'%3E0%3C/text%3E%3Ctext x='100' y='86'%3E0%3C/text%3E%3Ctext x='112' y='86'%3E1%3C/text%3E%3Ctext x='124' y='86'%3E0%3C/text%3E%3Ctext x='4' y='104'%3E0%3C/text%3E%3Ctext x='16' y='104'%3E0%3C/text%3E%3Ctext x='28' y='104'%3E1%3C/text%3E%3Ctext x='40' y='104'%3E0%3C/text%3E%3Ctext x='52' y='104'%3E1%3C/text%3E%3Ctext x='64' y='104'%3E0%3C/text%3E%3Ctext x='76' y='104'%3E1%3C/text%3E%3Ctext x='88' y='104'%3E0%3C/text%3E%3Ctext x='100' y='104'%3E1%3C/text%3E%3Ctext x='112' y='104'%3E0%3C/text%3E%3Ctext x='124' y='104'%3E1%3C/text%3E%3Ctext x='4' y='122'%3E1%3C/text%3E%3Ctext x='16' y='122'%3E0%3C/text%3E%3Ctext x='28' y='122'%3E0%3C/text%3E%3Ctext x='40' y='122'%3E1%3C/text%3E%3Ctext x='52' y='122'%3E0%3C/text%3E%3Ctext x='64' y='122'%3E1%3C/text%3E%3Ctext x='76' y='122'%3E0%3C/text%3E%3Ctext x='88' y='122'%3E0%3C/text%3E%3Ctext x='100' y='122'%3E1%3C/text%3E%3Ctext x='112' y='122'%3E0%3C/text%3E%3Ctext x='124' y='122'%3E1%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 140px 140px;
+  opacity: 0.25;
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 40%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 40%,
+    transparent 100%
+  );
+}
+
+.navbar-halo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center top,
+    rgba(30, 115, 179, 0.25) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
