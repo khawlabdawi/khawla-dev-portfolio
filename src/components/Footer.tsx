@@ -4,47 +4,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, ArrowUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-
-const FOOTER_LINKS = [
-  {
-    title: { en: "Pages", ar: "الصفحات" },
-    links: [
-      { href: "/", en: "Home", ar: "الرئيسية" },
-      { href: "/about", en: "About", ar: "من أنا" },
-      { href: "/services", en: "Services", ar: "الخدمات" },
-      { href: "/skills", en: "Skills", ar: "المهارات" },
-      { href: "/projects", en: "Projects", ar: "المشاريع" },
-      { href: "/contact", en: "Contact", ar: "تواصل" },
-    ],
-  },
-  {
-    title: { en: "Services", ar: "الخدمات" },
-    links: [
-      {
-        href: "/services#graduation-projects",
-        en: "Graduation Projects",
-        ar: "مشاريع تخرج",
-      },
-      {
-        href: "/services#software-development",
-        en: "Software Development",
-        ar: "تطوير برمجيات",
-      },
-      {
-        href: "/services#laptop-bags",
-        en: "Laptop Bags",
-        ar: "حقائب لابتوب",
-      },
-      {
-        href: "/services#tech-interviews",
-        en: "Tech Interviews",
-        ar: "مقابلات تقنية",
-      },
-    ],
-  },
-];
 
 // أيقونة GitHub (SVG)
 function GithubIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -74,103 +36,152 @@ function LinkedinIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
+// ⚠️ غيّري الروابط للروابط الحقيقية
+const SOCIALS = {
+  github: "https://github.com/khawla-dev",
+  linkedin: "https://linkedin.com/in/khawla-dev",
+  email: "khawlabd1212@gmail.com",
+};
+
+const QUICK_LINKS = [
+  { href: "/", en: "Home", ar: "الرئيسية" },
+  { href: "/about", en: "About", ar: "من أنا" },
+  { href: "/services", en: "Services", ar: "خدماتي" },
+  { href: "/skills", en: "Skills", ar: "مهاراتي" },
+  { href: "/projects", en: "Projects", ar: "أعمالي" },
+  { href: "/contact", en: "Contact", ar: "تواصل" },
+];
+
+const SERVICES = [
+  { en: "Graduation Projects", ar: "مشاريع تخرج", href: "/services#graduation-projects" },
+  { en: "Software Development", ar: "تطوير برمجيات", href: "/services#software-development" },
+  { en: "Premium Laptop Bags", ar: "حقائب لابتوب فاخرة", href: "/services#laptop-bags" },
+  { en: "Technical Interviews", ar: "مقابلات تقنية", href: "/services#tech-interviews" },
+];
+
 export default function Footer() {
   const { t } = useLanguage();
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
+
+  const socialItems = [
+    { icon: GithubIcon, href: SOCIALS.github, label: "GitHub", external: true },
+    { icon: LinkedinIcon, href: SOCIALS.linkedin, label: "LinkedIn", external: true },
+    { icon: Mail, href: `mailto:${SOCIALS.email}`, label: "Email", external: false },
+  ];
 
   return (
-    <footer className="relative mt-20 border-t border-white/10 bg-ink-950/50">
-      <div className="relative mx-auto max-w-6xl px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-          {/* العمود 1 */}
-          <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4 group">
-              <span className="relative h-10 w-10 overflow-hidden rounded-full ring-1 ring-brand-500/30 group-hover:ring-brand-500/60 transition-all">
+    <footer className="relative border-t border-white/10 bg-ink-950">
+      {/* خط متدرج علوي */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent" />
+
+      <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_auto]">
+          {/* البراند */}
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2.5">
+              <span className="relative h-9 w-9 overflow-hidden rounded-full ring-1 ring-white/15">
                 <Image
                   src="/logo.png"
                   alt="Khawla Dev"
                   fill
-                  sizes="40px"
+                  sizes="36px"
                   className="object-cover"
                 />
               </span>
-              <span className="text-lg font-medium text-white">
+              <span className="text-base font-medium text-white">
                 khawla<span className="text-brand-400">.dev</span>
               </span>
             </Link>
-            <p className="text-sm text-white/60 leading-relaxed max-w-md">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
               {t({
-                en: "Fullstack Software Engineer building complete web applications from idea to deployment.",
-                ar: "مهندسة برمجيات Fullstack، أبني تطبيقات ويب كاملة من الفكرة للنشر.",
+                en: "Fullstack engineer building reliable web products, from idea to deployment.",
+                ar: "مهندسة Fullstack بتبني منتجات ويب موثوقة، من الفكرة لحد النشر.",
               })}
             </p>
 
-            <div className="flex gap-3 mt-5">
-              <a
-                href="https://github.com/khawla-dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:bg-brand-500/20 hover:border-brand-500/40 transition-all"
-              >
-                <GithubIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="https://linkedin.com/in/khawla-dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:bg-brand-500/20 hover:border-brand-500/40 transition-all"
-              >
-                <LinkedinIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="mailto:khawlabd1212@gmail.com"
-                aria-label="Email"
-                className="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:bg-brand-500/20 hover:border-brand-500/40 transition-all"
-              >
-                <Mail className="h-4 w-4" />
-              </a>
+            <div className="mt-6 flex gap-2.5">
+              {socialItems.map(({ icon: Icon, href, label, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10
+                             text-white/60 transition-all duration-200 hover:-translate-y-0.5
+                             hover:border-brand-500/50 hover:text-white"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* أعمدة الروابط */}
-          {FOOTER_LINKS.map((column, i) => (
-            <div key={i}>
-              <h3 className="text-sm font-semibold text-white mb-4">
-                {t(column.title)}
-              </h3>
-              <ul className="space-y-2.5">
-                {column.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/60 hover:text-brand-400 transition-colors"
-                    >
-                      {t({ en: link.en, ar: link.ar })}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* روابط سريعة */}
+          <div>
+            <h4 className="mb-4 text-sm font-medium text-white">
+              {t({ en: "Quick links", ar: "روابط سريعة" })}
+            </h4>
+            <ul className="space-y-2.5">
+              {QUICK_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/50 transition-colors duration-200 hover:text-brand-400"
+                  >
+                    {t({ en: link.en, ar: link.ar })}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* الخدمات */}
+          <div>
+            <h4 className="mb-4 text-sm font-medium text-white">
+              {t({ en: "Services", ar: "الخدمات" })}
+            </h4>
+            <ul className="space-y-2.5">
+              {SERVICES.map((service) => (
+                <li key={service.en}>
+                  <Link
+                    href={service.href}
+                    className="text-sm text-white/50 transition-colors duration-200 hover:text-brand-400"
+                  >
+                    {t({ en: service.en, ar: service.ar })}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* زر العودة للأعلى */}
+          <div className="flex items-start lg:justify-end">
+            <motion.button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              whileHover={{ y: -3 }}
+              className="flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5
+                         text-xs text-white/60 transition-colors duration-200
+                         hover:border-brand-500/50 hover:text-white cursor-pointer"
+            >
+              {t({ en: "Back to top", ar: "للأعلى" })}
+              <ArrowUp className="h-3.5 w-3.5" />
+            </motion.button>
+          </div>
         </div>
 
-        <div className="pt-6 border-t border-white/10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-white/40">
-              © {currentYear} Khawla Dev.{" "}
-              {t({ en: "All rights reserved.", ar: "جميع الحقوق محفوظة." })}
-            </p>
-            <p className="text-xs text-white/40 flex items-center gap-1.5">
-              {t({ en: "Built with", ar: "صُنع بـ" })}
-              <Heart className="h-3 w-3 text-brand-400 fill-brand-400" />
-              {t({
-                en: "using Next.js & Tailwind",
-                ar: "باستخدام Next.js و Tailwind",
-              })}
-            </p>
-          </div>
+        {/* الشريط السفلي */}
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row">
+          <p>
+            © {year} Khawla Dev.{" "}
+            {t({ en: "All rights reserved.", ar: "جميع الحقوق محفوظة." })}
+          </p>
+          <p>
+            {t({
+              en: "Built with Next.js & Tailwind CSS",
+              ar: "بُني باستخدام Next.js و Tailwind CSS",
+            })}
+          </p>
         </div>
       </div>
     </footer>
